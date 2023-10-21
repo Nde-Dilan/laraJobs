@@ -9,7 +9,7 @@
             type="text"
             name="search"
             class="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
-            placeholder="Search Laravel Gigs..."
+            placeholder="Search Laravel Jobs..."
         />
         <div class="absolute top-2 right-2">
             <button

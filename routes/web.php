@@ -26,9 +26,10 @@ Route::get('/search',function (Request $request){
     dd($request->name);
 });
 
-Route::get('/jobs/{id}/',function ($id){
-    
-   return view('job',[
-        'job'=> Job::find($id)
+/*Route Model binding, automaticaly generate a 404 page if the item is not found */
+
+Route::get('/jobs/{job}/',function (Job $job){
+    return view('job',[
+        'job'=> $job
     ]);
 });
