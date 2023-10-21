@@ -36,9 +36,14 @@
             </ul>
         </nav>
         
-        <main>
-            
-    @yield('content')
+<main>
+      
+    
+    {{-- @yield('content') --}}
+    
+    {{$slot}}
+
+
 </main>
 
 

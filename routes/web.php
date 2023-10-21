@@ -1,9 +1,8 @@
 <?php
 
+use App\Http\Controllers\Job as JobController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Job;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,22 +13,13 @@ use App\Models\Job;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('jobs', [
-        'heading' => 'Latest Jobs',
-        'jobs'=> Job::all() 
-    ]);
-});
-
-Route::get('/search',function (Request $request){
+/*Route::get('/search',function (Request $request){
     dd($request->name);
-});
+}); */
+
+Route::get('/',[JobController::class,'index']);
 
 /*Route Model binding, automaticaly generate a 404 page if the item is not found */
 
-Route::get('/jobs/{job}/',function (Job $job){
-    return view('job',[
-        'job'=> $job
-    ]);
-});
+Route::get('/jobs/{job}/',[JobController::class,'show']);
+
