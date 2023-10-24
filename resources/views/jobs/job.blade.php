@@ -9,6 +9,7 @@
                 </a>
 </button>
             <div class="mx-4">
+                
             <x-card class="p-9">  
                 <div
                         class="flex flex-col items-center justify-center text-center"

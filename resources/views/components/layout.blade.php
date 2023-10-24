@@ -5,12 +5,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="{{asset('images/favicon.ico')}}" />
-        @vite('resources/css/app.css')
+        @vite(['resources/css/app.css','resources/js/app.js'])
 
         <title>LaraJobs | Find Laravel Jobs & Projects</title>
     </head>
     <body class="mb-48">
-        
         <nav class="flex justify-between items-center mb-4">
             <a href="/"
                 ><img class="w-24" src="{{asset('images/logo.png')}}" alt="" class="logo"
@@ -40,7 +39,7 @@
       
     
     {{-- @yield('content') --}}
-    
+
     {{$slot}}
 
 
@@ -57,13 +56,14 @@
     <button
     class="">
         <a
-            href="create.html"
+            href="/jobs/create/"
             class="absolute top-1/3 right-10 bg-black rounded-xl border border-white text-white py-2 px-5 hover:text-black hover:bg-white hover:border hover:border-black"
             >Post Job</a
         >
     </button>
 </footer>
 </body>
+<x-flash-message/>
 </html>
 
 </body>

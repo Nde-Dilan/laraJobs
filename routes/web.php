@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| be assigned to the "web " middleware group. Make something great!
 |
 */
 /*Route::get('/search',function (Request $request){
@@ -19,7 +19,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[JobController::class,'index']);
 
-/*Route Model binding, automaticaly generate a 404 page if the item is not found */
 
-Route::get('/jobs/{job}/',[JobController::class,'show']);
+//Show create form 
+
+Route::get('/jobs/create',[JobController::class,'create']);
+
+
+//Store jobs data
+Route::post('/jobs',[JobController::class,'store']);
+
+
+
+/*Route Model binding, automaticaly generate a 404 page if the item is not found */
+//Get an show a single job
+Route::get('/jobs/{job}',[JobController::class,'show']);
 
