@@ -6,14 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\Job as ModelsJob;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Js;
 
 class Job extends Controller
 {
-    
+
     //Get and Show all jobs
     public function index(Request $request)
     {
-    //    dd(ModelsJob::latest()->filter(["$request->tag", "$request->search"])->paginate(2));
+        //    dd(ModelsJob::latest()->filter(["$request->tag", "$request->search"])->paginate(2));
         return view('jobs/jobs', [
             // 'jobs'=> ModelsJob::all() 
             'jobs' => ModelsJob::latest()->filter(["$request->tag", "$request->search"])->simplePaginate(5)
@@ -43,27 +44,59 @@ class Job extends Controller
             'email' => ['required', 'email'],
         ]);
 
+        //Storing the logo
+
+        if ($request->hasFile('logo')) {
+            // dd($request->file('logo')->store('logos','public'));
+            $formFields['logo'] = $request->file('logo')->store('logos', 'public');
+        } else {
+            $formFields['logo'] = "images/no-image.png";
+        }
+
+        // dd($formFields);
+
         ModelsJob::create($formFields);
 
 
-        return redirect('/')->with('message','testing message');
+        return redirect('/')->with('message', 'Job created successfully!');
     }
     public function edit(ModelsJob $job)
     {
-        return view('jobs/job', [
+        return view('jobs/edit', [
             'job' => $job
         ]);
     }
-    public function update(ModelsJob $job)
+    public function update(Request $request,ModelsJob $job)
+
     {
-        return view('jobs/job', [
-            'job' => $job
+        $formFields = $request->validate([
+            'title' => 'required',
+            'company' => ['required'],
+            'location' => 'required',
+            'website' => 'required',
+            'tags' => 'required',
+            'description' => 'required',
+            'email' => ['required', 'email'],
         ]);
+
+        //Storing the logo
+
+        if ($request->hasFile('logo')) {
+            // dd($request->file('logo')->store('logos','public'));
+            $formFields['logo'] = $request->file('logo')->store('logos', 'public');
+        }
+
+        // dd($formFields);
+
+        $job->update($formFields);
+
+
+        return back()->with('message', 'Job updated successfully!');
     }
     public function destroy(ModelsJob $job)
     {
-        return view('jobs/job', [
-            'job' => $job
-        ]);
+        $job->delete();
+    
+        return redirect('/')->with('message','Job deleted successfully!');
     }
 }

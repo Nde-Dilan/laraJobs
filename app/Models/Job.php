@@ -10,7 +10,7 @@ class Job extends Model
     use HasFactory;
 
     //Or add Model::unguard() inside the AppServiceProviders file
-    protected $fillable = ['title', 'tags', 'company', 'location', 'website', 'email', 'description'];
+    protected $fillable = ['title', 'tags', 'company', 'location', 'website','logo' , 'email', 'description'];
 
     /*Scopefilter  */
     public function scopeFilter($query, array $filters)

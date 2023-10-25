@@ -24,9 +24,20 @@ Route::get('/',[JobController::class,'index']);
 
 Route::get('/jobs/create',[JobController::class,'create']);
 
-
 //Store jobs data
 Route::post('/jobs',[JobController::class,'store']);
+
+//Show edit form 
+
+Route::get('/jobs/edit/{job}',[JobController::class,'edit']);
+
+//Store edited data
+
+Route::put('/jobs/{job}',[JobController::class,'update']);
+
+//Delete data
+
+Route::delete('/jobs/{job}',[JobController::class,'destroy']);
 
 
 
@@ -34,3 +45,8 @@ Route::post('/jobs',[JobController::class,'store']);
 //Get an show a single job
 Route::get('/jobs/{job}',[JobController::class,'show']);
 
+
+
+//Show register form
+
+Route::get('/register',[UserController::class,'create']);

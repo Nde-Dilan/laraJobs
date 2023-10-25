@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+    darkMode: 'class',
     content: [
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
@@ -9,6 +10,7 @@ module.exports = {
         extend: {
             colors: {
                 laravel: "#ef3b2d",
+                customBlack:"#F14F42",
             },
         },
     },
