@@ -14,6 +14,16 @@ class Job extends Controller
     //Get and Show all jobs
     public function index(Request $request)
     {
+        // // dd($this);
+        // // Récupérez la requête de l'appareil mobile
+        // $query = $this->window->matchMedia('(max-width: 768px)');
+
+        // // Définissez le nombre d'éléments à afficher par page
+        // $perPage = $query.matches ? 6 : 15;
+
+        // // Retournez la pagination
+        // return $this->paginate($data, $perPage);
+
         //    dd(ModelsJob::latest()->filter(["$request->tag", "$request->search"])->paginate(2));
         return view('jobs/jobs', [
             // 'jobs'=> ModelsJob::all() 
@@ -66,7 +76,7 @@ class Job extends Controller
             'job' => $job
         ]);
     }
-    public function update(Request $request,ModelsJob $job)
+    public function update(Request $request, ModelsJob $job)
 
     {
         $formFields = $request->validate([
@@ -96,7 +106,7 @@ class Job extends Controller
     public function destroy(ModelsJob $job)
     {
         $job->delete();
-    
-        return redirect('/')->with('message','Job deleted successfully!');
+
+        return redirect('/')->with('message', 'Job deleted successfully!');
     }
 }

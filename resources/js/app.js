@@ -15,3 +15,4 @@ sunBtn.addEventListener('click',()=>{
     htmlEl.classList.contains("dark") ?
     sunBtn.setAttribute('fill','white') :  sunBtn.setAttribute('fill','black');
 })
+

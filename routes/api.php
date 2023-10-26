@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DeviceDetectionController;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
@@ -17,14 +18,17 @@ use Illuminate\Support\Facades\Route;
 
 /*To access this inside a browser don't forget to include api/ brfore the name of the route */
 
-Route::get('/posts',function(){
-    return Response()->json([
-        'posts'=>[
-            'title'=>'First Post'
-        ]
-        ]);
-});
+// Route::get('/posts',function(){
+//     return Response()->json([
+//         'posts'=>[
+//             'title'=>'First Post'
+//         ]
+//         ]);
+// });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::post('/device-detect',[DeviceDetectionController::class,'deviceDetect']);

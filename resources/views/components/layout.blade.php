@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="{{ asset('images/favicon.ico') }}" />
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js','resources/js/isMobile.js'])
 
     <title>LaraJobs | Find Laravel Jobs & Projects</title>
 </head>
@@ -25,18 +25,38 @@
                       </svg>
                 </button>
             </li>
-            <li><button class="border border-black rounded-xl font-bold p-2 dark:border dark:border-white dark:text-white">
+            @auth
+            <li>
+                <p class="font-bold mt-2 text-black dark:text-white">Welcome {{auth()->user()->name}} ✨</p>
+            </li>
+            <li>
+                <button class="border border-black font-bold rounded-xl p-2 dark:border dark:border-white dark:text-white">
+                    <a href="/users/login" class="hover:text-laravel"><i class="fa-solid fa-arrow-right-to-bracket "></i>
+                       ⚙️ Manage Jobs</a>
+                </button>
+            </li>
+            <li>
+                <form action="/users/logout" method="POST" class="border border-black font-bold rounded-xl p-1 dark:border dark:border-red-600 cursor-pointer dark:bg-white dark:text-red-600">
+                    @csrf
+                       <button type="submit">Logout</button>
+                </form>
+            </li>
+            @else
+            <li>
+                <button class="border border-black rounded-xl font-bold p-2 dark:border dark:border-white dark:text-white">
 
-                    <a href="register.html" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i>
+                    <a href="/users/register" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i>
                         Register</a>
                 </button>
             </li>
             <li>
                 <button class="border border-black font-bold rounded-xl p-2 dark:border dark:border-white dark:text-white">
-                    <a href="login.html" class="hover:text-laravel"><i class="fa-solid fa-arrow-right-to-bracket "></i>
+                    <a href="/users/login" class="hover:text-laravel"><i class="fa-solid fa-arrow-right-to-bracket "></i>
                         Login</a>
                 </button>
             </li>
+            @endauth
+           
         </ul>
     </nav>
 

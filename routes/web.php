@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Job as JobController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 /*
@@ -49,4 +50,19 @@ Route::get('/jobs/{job}',[JobController::class,'show']);
 
 //Show register form
 
-Route::get('/register',[UserController::class,'create']);
+Route::get('/users/register',[UserController::class,'create']);
+
+//Create new user
+
+Route::post('/users/register',[UserController::class,'store']);
+
+//Show login form
+
+Route::get('/users/login',[UserController::class,'login']);
+
+//Create new user
+
+Route::post('/users/login',[UserController::class,'authenticate']);
+
+//Log the user out
+Route::post('/users/logout',[UserController::class,'logout']);
