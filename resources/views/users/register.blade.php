@@ -54,11 +54,11 @@
                     </button>
                 </div>
 
-                <div class="mt-8">
-                    <p class="text-sm font-bold ">
-                        Already have an account?
-                        <div class="bg-gray-500"><a href="/login" class="text-laravel">Login</a></div>
-                    </p>
+                <div class="flex justify-between mt-8">
+                    <p class="text-xl font-mono font-bold mt-2">
+                        Already have an account?</p>
+                        <button class="bg-black rounded-xl border border-white text-white py-2 px-5 mb-1 hover:text-black hover:bg-white hover:border hover:border-black"><a href="/users/login" class="">Login</a></button>
+                    
                 </div>
             </form>
         </x-card>

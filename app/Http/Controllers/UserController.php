@@ -48,8 +48,9 @@ class UserController extends Controller
     {
         $formFields = $request->validate([
 
-            'email' => ['required', 'email'
-        ],
+            'email' => [
+                'required', 'email'
+            ],
             'password' => ['required'],
             // 'password_confirmation' =>[ 'required','min:8'],
         ]);
@@ -57,9 +58,9 @@ class UserController extends Controller
         if (auth()->attempt($formFields)) {
             $request->session()->regenerate();
 
-            return redirect('/')->with('message',"Logged in successfully!");
+            return redirect('/')->with('message', "Logged in successfully!");
         }
 
-        return back()->withErrors(['email'=>"Invalid Credentials"])->onlyInput('email');
+        return back()->withErrors(['email' => "Invalid Credentials"])->onlyInput('email');
     }
 }

@@ -18,51 +18,54 @@ use Illuminate\Support\Facades\Route;
     dd($request->name);
 }); */
 
-Route::get('/',[JobController::class,'index']);
+Route::get('/', [JobController::class, 'index']);
 
 
 //Show create form 
 
-Route::get('/jobs/create',[JobController::class,'create']);
+Route::get('/jobs/create', [JobController::class, 'create'])->middleware('auth');
 
 //Store jobs data
-Route::post('/jobs',[JobController::class,'store']);
+Route::post('/jobs', [JobController::class, 'store'])->middleware('auth');
 
 //Show edit form 
 
-Route::get('/jobs/edit/{job}',[JobController::class,'edit']);
+Route::get('/jobs/edit/{job}', [JobController::class, 'edit'])->middleware('auth');
 
 //Store edited data
 
-Route::put('/jobs/{job}',[JobController::class,'update']);
+Route::put('/jobs/{job}', [JobController::class, 'update']);
 
 //Delete data
 
-Route::delete('/jobs/{job}',[JobController::class,'destroy']);
+Route::delete('/jobs/{job}', [JobController::class, 'destroy'])->middleware('auth');
 
 
 
 /*Route Model binding, automaticaly generate a 404 page if the item is not found */
 //Get an show a single job
-Route::get('/jobs/{job}',[JobController::class,'show']);
+Route::get('/jobs/{job}', [JobController::class, 'show']);
 
 
 
 //Show register form
 
-Route::get('/users/register',[UserController::class,'create']);
+Route::get('/users/register', [UserController::class, 'create'])->middleware('guest');
 
 //Create new user
 
-Route::post('/users/register',[UserController::class,'store']);
+Route::post('/users/register', [UserController::class, 'store'])->middleware('guest');
 
 //Show login form
 
-Route::get('/users/login',[UserController::class,'login']);
+Route::get('/users/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 
-//Create new user
+//Log the new user in
 
-Route::post('/users/login',[UserController::class,'authenticate']);
+Route::post('/users/login', [UserController::class, 'authenticate'])->middleware('guest');
 
 //Log the user out
-Route::post('/users/logout',[UserController::class,'logout']);
+Route::post('/users/logout', [UserController::class, 'logout'])->middleware('auth');
+
+
+//TODO: How to change the 404 page of laravel ?

@@ -5,9 +5,9 @@
         <a href="/" class="inline-block text-bold  text-black ml-2 mb-4"><i class="fa-solid fa-arrow-left"></i>⬅️ Back
         </a>
     </button>
-    <div class="mx-4">
+    <div class="mx-4 flex flex-row justify-center">
 
-        <x-card class="p-9">
+        <x-card class="p-9 w-8/12">
             <div class="flex flex-col items-center justify-center text-center">
 
                 <img class="w-48 mr-6 mb-6"
