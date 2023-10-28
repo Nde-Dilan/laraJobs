@@ -2,13 +2,15 @@
     @include('partials/_search')
 
     <button type="button" class="h-10 w-20 mb-3 py-2 px-0 mx-2 rounded-lg bg-red-500 hover:bg-red-600">
-        <a href="/" class="inline-block text-bold  text-black ml-2 mb-4"><i class="fa-solid fa-arrow-left"></i>⬅️ Back
+        <a href="/" class="inline-block text-bold  text-black ml-2 mb-4"><i class="fa-solid fa-arrow-left"></i>⬅️
+            Back
         </a>
     </button>
     <div class="mx-4 flex flex-row justify-center">
 
         <x-card class="p-9 w-8/12">
             <div class="flex flex-col items-center justify-center text-center">
+                
 
                 <img class="w-48 mr-6 mb-6"
                     src="{{ $job->logo ? asset('storage/' . $job->logo) : asset('images/no-image.png') }}"
@@ -45,18 +47,21 @@
                     </div>
                 </div>
         </x-card>
-        <x-card class="flex justify-between space-x-6 mt-4 p-2">
-            <button class="h-10 w-20 text-white rounded-lg bg-green-500 hover:bg-green-600"><a
-                    href="/jobs/edit/{{ $job->id }}">✍️ Edit</a></button>
-            <form action="/jobs/{{ $job->id }}" method="post">
-                @csrf
-                @method('DELETE')
-                <button  class="h-10 w-20 text-white rounded-lg bg-red-500 hover:bg-red-600">
-                    🗑️ Delete
-                </button>
-            </form>
-        </x-card>
+        @if ($job->user_id === auth()->user()->id)
+            <x-card class="flex justify-between space-x-6 mt-4 p-2">
+                <button class="h-10 w-20 text-white rounded-lg bg-green-500 hover:bg-green-600"><a
+                        href="/jobs/edit/{{ $job->id }}">✍️ Edit</a></button>
+                <form action="/jobs/{{ $job->id }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button class="h-10 w-20 text-white rounded-lg bg-red-500 hover:bg-red-600">
+                        🗑️ Delete
+                    </button>
+                </form>
+            </x-card>
+        @else
 
+        @endif
     </div>
     </div>
 </x-layout>

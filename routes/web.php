@@ -41,10 +41,12 @@ Route::put('/jobs/{job}', [JobController::class, 'update']);
 Route::delete('/jobs/{job}', [JobController::class, 'destroy'])->middleware('auth');
 
 
+Route::get('/jobs/manage', [JobController::class, 'manage'])->middleware('auth');
 
 /*Route Model binding, automaticaly generate a 404 page if the item is not found */
 //Get an show a single job
-Route::get('/jobs/{job}', [JobController::class, 'show']);
+Route::get('/jobs/{job}', [JobController::class, 'show'])->middleware('auth');
+
 
 
 
@@ -67,5 +69,6 @@ Route::post('/users/login', [UserController::class, 'authenticate'])->middleware
 //Log the user out
 Route::post('/users/logout', [UserController::class, 'logout'])->middleware('auth');
 
+//Manage jobs 
 
 //TODO: How to change the 404 page of laravel ?

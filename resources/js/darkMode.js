@@ -1,28 +1,33 @@
-const darkmode = ()=>{
-    // let themeToggleBtns= document.querySelectorAll('#theme-toggle');
-    //State variable, store the theme inside the local storage
-    let sunBtn = document.querySelectorAll('.sun');
-    // let contact__links = document.querySelectorAll('.contact__link');
-    let theme = localStorage.getItem('theme');
-    //on mount , when you first visit a page or reload the page, the && executes the first falsy value else executes the last statement.
-    if(theme) {
-    document.body.classList.add(theme)
-    // sunBtn.forEach(el=>el.setAttribute('fill','black'))
-}
-    //handlers
-    const handleThemeToggle = ()=>{
-        document.body.classList.toggle('dark');
-        if ( document.body.classList.contains('light-mode')) {
-            sunBtn.forEach(el=>el.setAttribute('fill','black'))
-            contact__links.forEach(el=>el.setAttribute('fill','black'))
-            localStorage.setItem('theme','light-mode')
-        } else {
-            sunBtn.forEach(el=>el.setAttribute('fill','white'));
-            contact__links.forEach(el=>el.setAttribute('fill','white'));
-            localStorage.removeItem('theme')
-        }
-    }
-    themeToggleBtns.forEach(el =>el.addEventListener('click',()=> handleThemeToggle()));
-}
-export default darkmode;
+const darkMode = () => {
+    let darkBack = document.querySelector('.dark-back');
 
+    let htmlEl = document.querySelector("html");
+    let theme = localStorage.getItem("theme");
+
+    if (theme && theme === "dark") {
+        htmlEl.classList.add(theme);
+    }
+
+    let sunBtns = document.querySelectorAll(".sun");
+
+    sunBtns.forEach((el) =>
+        el.addEventListener("click", () => {
+            htmlEl.classList.toggle("dark");
+
+            if (htmlEl.classList.contains("dark")) {
+                localStorage.setItem("theme", "dark");
+                el.setAttribute("fill", "white");
+                // darkBack.hidden=false;
+                darkBack.style.display="initial";
+            } else {
+                localStorage.setItem("theme", "light");
+                el.setAttribute("fill", "black");
+                darkBack.style.display="none";
+                // darkBack.hidden=true;
+                
+            }
+        })
+    );
+};
+
+export default darkMode;

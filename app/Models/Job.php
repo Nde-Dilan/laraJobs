@@ -10,7 +10,7 @@ class Job extends Model
     use HasFactory;
 
     //Or add Model::unguard() inside the AppServiceProviders file
-    protected $fillable = ['title', 'tags', 'company', 'location', 'website','logo' , 'email', 'description'];
+    protected $fillable = ['title', 'tags', 'company', 'location', 'website','logo' , 'email', 'user_id', 'description'];
 
     /*Scopefilter  */
     public function scopeFilter($query, array $filters)
@@ -24,5 +24,11 @@ class Job extends Model
                 ->orWhere('title', 'like', '%' . $filters[1] . '%')
                 ->orWhere('description', 'like', '%' . $filters[1] . '%');
         }
+    }
+
+    //Relationship with user
+
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
     }
 }
