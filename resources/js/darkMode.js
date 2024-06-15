@@ -1,5 +1,6 @@
 const darkMode = () => {
     let darkBack = document.querySelector('.dark-back');
+    let barIcon = document.querySelector('.header__bars_svg');
 
     let htmlEl = document.querySelector("html");
     let theme = localStorage.getItem("theme");
@@ -17,11 +18,14 @@ const darkMode = () => {
             if (htmlEl.classList.contains("dark")) {
                 localStorage.setItem("theme", "dark");
                 el.setAttribute("fill", "white");
+                console.log(barIcon);
+                barIcon.setAttribute("fill", "white");
                 // darkBack.hidden=false;
                 darkBack.style.display="initial";
             } else {
                 localStorage.setItem("theme", "light");
                 el.setAttribute("fill", "black");
+                barIcon.setAttribute("fill", "black");
                 darkBack.style.display="none";
                 // darkBack.hidden=true;
                 

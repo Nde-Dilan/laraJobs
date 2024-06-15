@@ -1,0 +1,16 @@
+{
+  "public/images/laravel-logo.png": {
+    "file": "assets/laravel-logo-31b9ffe0.png",
+    "src": "public/images/laravel-logo.png"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-8ab32d82.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-13702461.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  }
+}

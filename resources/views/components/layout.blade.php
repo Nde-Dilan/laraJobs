@@ -61,8 +61,8 @@
         </ul>
         
     </nav>
-    <button class="header__bars md:hidden"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 my-3 mr-3">
-        <path fill-rule="evenodd" fill="white" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
+    <button class="header__bars md:hidden"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  class="w-10 h-10 my-3 mr-3 header__bars_svg">
+        <path fill-rule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
       </svg>
       </button>
       <x-mobile>
@@ -87,7 +87,7 @@
 
         <button class="">
             <a href="/jobs/create/"
-                class="absolute top-1/3 right-10 bg-black rounded-xl border border-white text-white py-2 px-5 hover:text-black hover:bg-white hover:border hover:border-black">Post
+                class="absolute bottom-0 right-10 bg-black rounded-xl border  border-white text-white py-2 px-5 hover:text-black hover:bg-white hover:border hover:border-black">Post
                 Job</a>
         </button>
     </footer>
